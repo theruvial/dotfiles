@@ -1,0 +1,55 @@
+format = """
+[](fg:#5BCEFA bg:#5BCEFA)[🦥](bg:#5BCEFA)[](fg:#5BCEFA bg:#F5A9B8)\
+$hostname\
+[](fg:#FFFFFF bg:#FFFFFF)[@ ](bg:#FFFFFF fg:#5f0b8f)[](fg:#FFFFFF bg:#F5A9B8)\
+$username\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$character\
+$cmd_duration\
+$sudo
+"""
+
+
+
+add_newline=false
+command_timeout=900
+
+[character]
+format="$symbol"
+success_symbol = '[](fg:#5BCEFA bg:#5BCEFA)[>](fg:bold #f261ff bg:#5BCEFA)[](fg:#5BCEFA) '
+error_symbol = '[](fg:#5BCEFA bg:#5BCEFA)[X](fg:bold red bg:#5BCEFA)[](fg:#5BCEFA) '
+
+[hostname]
+ssh_only = false
+format = "[](fg:#F5A9B8 bg:#F5A9B8)[$hostname](bg:#F5A9B8 fg:#5f0b8f)[](fg:#F5A9B8 bg:#FFFFFF)"
+
+[username]
+show_always=true
+style_root = 'bg:#F5A9B8 fg:red'
+style_user = 'bg:#F5A9B8 fg:#5f0b8f'
+format = "[](fg:#F5A9B8 bg:#F5A9B8)[$user]($style)[](fg:#F5A9B8 bg:#5BCEFA)"
+
+[sudo]
+format = "[$symbol]($style)"
+symbol = " 🧙 "
+disabled = false
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style)"
+style = 'fg:bold #5f0b8f bg:#5BCEFA'
+
+[git_state]
+format = '[ \($state( $progress_current/$progress_total)\)]($style)'
+style = 'fg:bold black bg:#5BCEFA'
+
+[git_status]
+format = '([ ](bg:#5BCEFA)[\[$all_status$ahead_behind\]]($style))'
+style = 'fg:bold red bg:#5BCEFA'
+
+[directory]
+format = '[](fg:#5BCEFA bg:#5BCEFA)[$path]($style)[$read_only]($read_only_style)[](fg:#5BCEFA bg:#5BCEFA)'
+style = 'fg:#5f0b8f bg:#5BCEFA'
+read_only_style = 'fg:bold red bg:#5BCEFA'
