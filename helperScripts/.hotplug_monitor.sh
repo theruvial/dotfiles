@@ -4,12 +4,14 @@ export DISPLAY=:0
 export XAUTHORITY=/home/theruvial/.Xauthority
 
 function connect(){
-    xrandr --output HDMI-A-0 --auto
-    xrandr --output HDMI-A-0 --above eDP --preferred --output eDP --preferred --primary 
+    xrandr --output DP-1-0.5 --auto
+    xrandr --output DP-1-0.6 --auto
+    xrandr --output DP-1-0.5 --above eDP --preferred --output DP-1-0.6 --right-of DP-1-0.5 --output eDP --preferred --primary 
 }
 
 function disconnect(){
-      xrandr --output HDMI-A-0 --off
+      xrandr --output DP-1-0.5 --off
+      xrandr --output DP-1-0.6 --off
 }
 
-xrandr | grep "HDMI-A-0 connected" &> /dev/null && connect || disconnect
+xrandr | grep "DP-1-0.5 connected" &> /dev/null && connect || disconnect
