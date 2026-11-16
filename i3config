@@ -239,7 +239,7 @@ bindsym $mod+p exec rofi -modi "clipboard:greenclip print" -show clipboard -run-
 #exec_always --no-startup-id numlockx on
 exec_always --no-startup-id dunst
 exec_always --no-startup-id firewalld
-exec_always --no-startup-id picom --vsync
+exec_always --no-startup-id picom --backend xrender --vsync
 exec_always --no-startup-id rogauracore initialize_keyboard
 #exec_always --no-startup-id greenclip daemon
 exec_always --no-startup-id nm-applet
