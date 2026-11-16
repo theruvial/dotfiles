@@ -72,14 +72,39 @@
   # GPU clock on this chip, so the GPU stays slow. Keep effects light:
   # use picom with the xrender backend, or run without a compositor.
 
-  # --- Optional: i3 session (the dotfiles in this repo are for i3) -----------
-  # Uncomment if you want i3 as your session, and remove other desktop options.
-  # services.xserver = {
-  #   enable = true;
-  #   windowManager.i3.enable = true;
-  # };
-  # services.xserver.displayManager.lightdm.enable = true;
-  # services.displayManager.defaultSession = "none+i3";
+  # --- Desktop: i3 on X11, logged in through ly -------------------------------
+  # KDE Plasma is too heavy for this GPU, so it is turned off here. mkForce
+  # keeps it off even if configuration.nix still enables Plasma or SDDM.
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+  };
+
+  services.displayManager = {
+    ly.enable = true;
+    defaultSession = "none+i3";
+  };
+
+  services.desktopManager.plasma6.enable = lib.mkForce false;
+  services.displayManager.sddm.enable = lib.mkForce false;
+
+  # Programs that i3config and i3statusConfig call. Add more as you need them.
+  environment.systemPackages = with pkgs; [
+    alacritty
+    rofi
+    dunst
+    picom
+    i3status
+    i3lock
+    xss-lock
+    networkmanagerapplet
+    playerctl
+    xclip
+    numlockx
+    xrandr
+    xinput
+    pavucontrol
+  ];
 
   # --- Optional: Broadcom Wi-Fi ----------------------------------------------
   # Check your card with: lspci -nn | grep -i network
