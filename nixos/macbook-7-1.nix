@@ -103,7 +103,6 @@
     numlockx
     xrandr
     xinput
-    pavucontrol
   ];
 
   # --- Optional: Broadcom Wi-Fi ----------------------------------------------
